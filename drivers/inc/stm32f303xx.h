@@ -254,8 +254,11 @@ typedef struct
 #define RCC 		((RCC_RegDef_t*) RCC_BASEADDR)
 
 /*
- * CLOCK ENABLE MACROS #############################################################
+ * ============================================================
+ * CLOCK ENABLE / DISABLE MACROS
+ * ============================================================
  */
+// GPIO ============================================================
 // Clock Enable Macros for GPIOx Peripherals
 #define GPIOA_PCLK_EN() (RCC->AHBENR |= ( 1 << 17 ))
 #define GPIOB_PCLK_EN() (RCC->AHBENR |= ( 1 << 18 ))
@@ -276,5 +279,81 @@ typedef struct
 #define GPIOG_PCLK_DI() (RCC->AHBENR &= ~(1U << 23))
 #define GPIOH_PCLK_DI() (RCC->AHBENR &= ~(1U << 16))
 
+// ADC ============================================================
+
+// Clock Enable Macros for ADC Peripherals
+#define ADC_1_2_PCLK_EN() (RCC->AHBENR |= (1 << 28))
+#define ADC_3_4_PCLK_EN() (RCC->AHBENR |= (1 << 29))
+
+// Clock Enable Macros for ADC Peripherals
+#define ADC_1_2_PCLK_DI() (RCC->AHBENR &= ~(1 << 28))
+#define ADC_3_4_PCLK_DI() (RCC->AHBENR &= ~(1 << 29))
+
+// TSC ============================================================
+// Clock Enable/Disable Macros for TSC Peripheral
+#define TSC_PCLK_EN() (RCC->AHBENR |= (1 << 24))
+#define TSC_PCLK_DI() (RCC->AHBENR &= ~(1 << 24))
+
+// CRC ============================================================
+// Clock Enable/Disable Macros for CRC Peripheral
+#define CRC_PCLK_EN() (RCC->AHBENR |= (1 << 6))
+#define CRC_PCLK_DI() (RCC->AHBENR &= ~(1 << 6))
+
+// FMC ============================================================
+// Clock Enable/Disable Macros for FMC Peripheral
+#define FMC_PCLK_EN() (RCC->AHBENR |= (1 << 5))
+#define FMC_PCLK_DI() (RCC->AHBENR &= ~(1 << 5))
+
+// FLITF ============================================================
+// Clock Enable/Disable Macros for FLITF Peripheral
+#define FLITF_PCLK_EN() (RCC->AHBENR |= (1 << 4))
+#define FLITF_PCLK_DI() (RCC->AHBENR &= ~(1 << 4))
+
+// Clock Enable Macros for Memories
+#define DMA1_PCLK_EN() (RCC->AHBENR |= (1 << 0))
+#define DMA2_PCLK_EN() (RCC->AHBENR |= (1 << 1))
+#define SRAM_PCLK_EN() (RCC->AHBENR |= (1 << 2))
+
+// Clock Enable Macros for Memories
+#define DMA1_PCLK_DI() (RCC->AHBENR &= ~(1 << 0))
+#define DMA2_PCLK_DI() (RCC->AHBENR &= ~(1 << 1))
+#define SRAM_PCLK_DI() (RCC->AHBENR &= ~(1 << 2))
+
+
+// Clock Enable Macros for I2Cx Peripherals
+
+
+// Clock Enable Macros for SPIx Peripherals
+
+// Clock Enable Macros for USARTx Peripherals
+
+// Clock Enable Macros for SYSCFG Peripheral
 
 #endif /* INC_STM32F303XX_H_ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

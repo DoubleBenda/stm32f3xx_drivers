@@ -199,4 +199,34 @@
 #define TIM17_BASEADDR        (APB2PERIPH_BASE + 0x4800U)
 
 
+
+/*
+ * ============================================================
+ * peripheral register definition structure for GPIO
+ * ============================================================
+ */
+typedef struct
+{
+	volatile uint32_t MODER;     // offset : 0x00
+	volatile uint32_t OTYPER;    // offset : 0x04
+	volatile uint32_t OSPEEDR;   // offset : 0x08
+	volatile uint32_t PUPDR;     // offset : 0x0C
+	volatile uint32_t IDR;       // offset : 0x10
+	volatile uint32_t ODR;       // offset : 0x14
+	volatile uint32_t BSRR;      // offset : 0x18
+	volatile uint32_t LCKR;      // offset : 0x1C
+	volatile uint32_t AFR[2];    // offset : 0x20 - 0x24
+	volatile uint32_t BRR;       // offset : 0x28
+}GPIO_RegDef_t;
+
+// Peripheral Definition Macros
+#define GPIOA ((GPIO_RegDef_t*)GPIOA_BASEADDR)
+#define GPIOB ((GPIO_RegDef_t*)GPIOB_BASEADDR)
+#define GPIOC ((GPIO_RegDef_t*)GPIOC_BASEADDR)
+#define GPIOD ((GPIO_RegDef_t*)GPIOD_BASEADDR)
+#define GPIOE ((GPIO_RegDef_t*)GPIOE_BASEADDR)
+#define GPIOF ((GPIO_RegDef_t*)GPIOF_BASEADDR)
+#define GPIOG ((GPIO_RegDef_t*)GPIOG_BASEADDR)
+#define GPIOH ((GPIO_RegDef_t*)GPIOH_BASEADDR)
+
 #endif /* INC_STM32F303XX_H_ */

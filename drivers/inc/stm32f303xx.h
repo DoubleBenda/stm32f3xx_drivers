@@ -229,4 +229,27 @@ typedef struct
 #define GPIOG ((GPIO_RegDef_t*)GPIOG_BASEADDR)
 #define GPIOH ((GPIO_RegDef_t*)GPIOH_BASEADDR)
 
+/*
+ * ============================================================
+ * peripheral register definition structure for RCC
+ * ============================================================
+ */
+typedef struct
+{
+	volatile uint32_t CR; 				// offest : 0x00
+	volatile uint32_t CFGR;				// offset : 0x04
+	volatile uint32_t CIR;				// offset : 0x08
+	volatile uint32_t APB2RSTR;			// offset : 0X0C
+	volatile uint32_t APB1RSTR;			// offset : 0X10
+	volatile uint32_t AHBENR;			// offset : 0X14
+	volatile uint32_t APB2ENR;			// offset : 0x18
+	volatile uint32_t APB1ENR;			// offset : 0x1C
+	volatile uint32_t BDCR;				// offset : 0x20
+	volatile uint32_t CSR;				// offset : 0x24
+	volatile uint32_t AHBRSTR;			// offset : 0X28
+	volatile uint32_t CFGR2;			// offset : 0x2C
+	volatile uint32_t CFGR3;			// offset : 0x30
+}RCC_RegDef_t;
+
+#define RCC 		((RCC_RegDef_t*) RCC_BASEADDR)
 #endif /* INC_STM32F303XX_H_ */

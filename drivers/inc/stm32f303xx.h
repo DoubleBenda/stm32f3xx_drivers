@@ -252,4 +252,29 @@ typedef struct
 }RCC_RegDef_t;
 
 #define RCC 		((RCC_RegDef_t*) RCC_BASEADDR)
+
+/*
+ * CLOCK ENABLE MACROS #############################################################
+ */
+// Clock Enable Macros for GPIOx Peripherals
+#define GPIOA_PCLK_EN() (RCC->AHBENR |= ( 1 << 17 ))
+#define GPIOB_PCLK_EN() (RCC->AHBENR |= ( 1 << 18 ))
+#define GPIOC_PCLK_EN() (RCC->AHBENR |= ( 1 << 19 ))
+#define GPIOD_PCLK_EN() (RCC->AHBENR |= ( 1 << 20 ))
+#define GPIOE_PCLK_EN() (RCC->AHBENR |= ( 1 << 21 ))
+#define GPIOF_PCLK_EN() (RCC->AHBENR |= ( 1 << 22 ))
+#define GPIOG_PCLK_EN() (RCC->AHBENR |= ( 1 << 23 ))
+#define GPIOH_PCLK_EN() (RCC->AHBENR |= ( 1 << 16 ))
+
+// Clock Disable Macros for GPIOx Peripherals
+#define GPIOA_PCLK_DI() (RCC->AHBENR &= ~(1U << 17))
+#define GPIOB_PCLK_DI() (RCC->AHBENR &= ~(1U << 18))
+#define GPIOC_PCLK_DI() (RCC->AHBENR &= ~(1U << 19))
+#define GPIOD_PCLK_DI() (RCC->AHBENR &= ~(1U << 20))
+#define GPIOE_PCLK_DI() (RCC->AHBENR &= ~(1U << 21))
+#define GPIOF_PCLK_DI() (RCC->AHBENR &= ~(1U << 22))
+#define GPIOG_PCLK_DI() (RCC->AHBENR &= ~(1U << 23))
+#define GPIOH_PCLK_DI() (RCC->AHBENR &= ~(1U << 16))
+
+
 #endif /* INC_STM32F303XX_H_ */

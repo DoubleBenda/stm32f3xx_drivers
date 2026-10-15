@@ -342,4 +342,28 @@ typedef struct
  * ADC gates alone do not configure the ADC conversion clock.
  */
 
+/* GPIOx PERIPHERALS RESET MACROS */
+#define GPIOA_REG_RESET()			do{(RCC->AHBRSTR |= (1 << 17));  (RCC->AHBRSTR &= ~(1 << 17));} while(0)
+#define GPIOB_REG_RESET()			do{(RCC->AHBRSTR |= (1 << 18));  (RCC->AHBRSTR &= ~(1 << 18));} while(0)
+#define GPIOC_REG_RESET()			do{(RCC->AHBRSTR |= (1 << 19));  (RCC->AHBRSTR &= ~(1 << 19));} while(0)
+#define GPIOD_REG_RESET()			do{(RCC->AHBRSTR |= (1 << 20));  (RCC->AHBRSTR &= ~(1 << 20));} while(0)
+#define GPIOE_REG_RESET()			do{(RCC->AHBRSTR |= (1 << 21));  (RCC->AHBRSTR &= ~(1 << 21));} while(0)
+#define GPIOF_REG_RESET()			do{(RCC->AHBRSTR |= (1 << 22));  (RCC->AHBRSTR &= ~(1 << 22));} while(0)
+#define GPIOG_REG_RESET()			do{(RCC->AHBRSTR |= (1 << 23));  (RCC->AHBRSTR &= ~(1 << 23));} while(0)
+#define GPIOH_REG_RESET()			do{(RCC->AHBRSTR |= (1 << 16));  (RCC->AHBRSTR &= ~(1 << 16));} while(0)
+
+// Utility Macros
+#define ENABLE      1
+#define DISABLE     0
+#define SET         ENABLE
+#define RESET       DISABLE
+#define GPIO_PIN_SET        SET
+#define GPIO_PIN_RESET      RESET
+#define HIGH ENABLE
+#define LOW DISABLE
+#define BUTTON_PRESSED HIGH
+#define BUTTON_NOT_PRESSED LOW
+
+#include "stm32f303xx_gpio_driver.h"
+
 #endif /* INC_STM32F303XX_H_ */

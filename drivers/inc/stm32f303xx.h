@@ -169,6 +169,7 @@ typedef struct
 	volatile uint32_t AFR[2];    // offset : 0x20 - 0x24
 	volatile uint32_t BRR;       // offset : 0x28
 }GPIO_RegDef_t;
+
 // Peripheral Definition Macros
 #define GPIOA ((GPIO_RegDef_t*)GPIOA_BASEADDR)
 #define GPIOB ((GPIO_RegDef_t*)GPIOB_BASEADDR)
@@ -178,6 +179,7 @@ typedef struct
 #define GPIOF ((GPIO_RegDef_t*)GPIOF_BASEADDR)
 #define GPIOG ((GPIO_RegDef_t*)GPIOG_BASEADDR)
 #define GPIOH ((GPIO_RegDef_t*)GPIOH_BASEADDR)
+
 /*
  * ============================================================
  * peripheral register definition structure for RCC
@@ -200,6 +202,48 @@ typedef struct
 	volatile uint32_t CFGR3;			// offset : 0x30
 }RCC_RegDef_t;
 #define RCC 		((RCC_RegDef_t*) RCC_BASEADDR)
+
+/*
+ * ============================================================
+ * peripheral register definition structure for EXTI
+ * ============================================================
+ */
+typedef struct
+{
+	volatile uint32_t IMR1; 		/* Interrupt Mask Register 1 */
+	volatile uint32_t EMR1; 		/* Event Mask Register 1 */
+	volatile uint32_t RTSR1; 		/* Rising Trigger Selection Register 1 */
+	volatile uint32_t FTSR1;	 	/* Falling Trigger Selection Register 1 */
+	volatile uint32_t SWIER1; 		/* Software Interrupt Event Register 1 */
+	volatile uint32_t PR1; 			/* Pending Register 1 */
+	volatile uint32_t IMR2; 		/* Interrupt Mask Register 2 */
+	volatile uint32_t EMR2; 		/* Event Mask Register 2 */
+	volatile uint32_t RTSR2; 		/* Rising Trigger Selection Register 2 */
+	volatile uint32_t FTSR2;	 	/* Falling Trigger Selection Register 2 */
+	volatile uint32_t SWIER2; 		/* Software Interrupt Event Register 2 */
+	volatile uint32_t PR2; 			/* Pending Register 2 */
+}EXTI_Reg_Def_t;
+
+#define EXTI		((EXTI_Reg_Def_t*) EXTI_BASEADDR)
+
+/*
+ * ============================================================
+ * peripheral register definition structure for SYSCFG
+ * ============================================================
+ */
+typedef struct
+{
+    volatile uint32_t CFGR1;       /* Offset: 0x00 */
+    volatile uint32_t RCR;         /* Offset: 0x04 */
+    volatile uint32_t EXTICR[4];   /* Offset: 0x08 - 0x14 */
+    volatile uint32_t CFGR2;       /* Offset: 0x18 */
+    uint32_t RESERVED0[11];        /* Offset: 0x1C - 0x44 */
+    volatile uint32_t CFGR4;       /* Offset: 0x48 */
+    uint32_t RESERVED1;            /* Offset: 0x4C */
+    volatile uint32_t CFGR3;       /* Offset: 0x50 */
+} SYSCFG_RegDef_t;
+
+#define SYSCFG 		((SYSCFG_RegDef_t*) SYSCFG_BASEADDR)
 
 /* Individual ADC and common-register bases. Existing group aliases retained. */
 #define ADC1_BASEADDR          (AHB3PERIPH_BASE + 0x0000U)

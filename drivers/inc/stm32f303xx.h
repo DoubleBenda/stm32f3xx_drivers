@@ -361,8 +361,8 @@ typedef struct
 #define GPIO_PIN_RESET      RESET
 #define HIGH ENABLE
 #define LOW DISABLE
-#define BUTTON_PRESSED HIGH
-#define BUTTON_NOT_PRESSED LOW
+#define BUTTON_PRESSED LOW
+#define BUTTON_NOT_PRESSED HIGH
 
 #include "stm32f303xx_gpio_driver.h"
 

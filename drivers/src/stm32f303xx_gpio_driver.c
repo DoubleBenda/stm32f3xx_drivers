@@ -61,8 +61,8 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
 	if(pGPIOHandle->GPIO_PinConfig.GPIO_PinMode <= GPIO_MODE_ANALOG)
 	{
 		// non interrupt modes
-		temp = (pGPIOHandle->GPIO_PinConfig.GPIO_PinMode << (2 * pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber));
-		pGPIOHandle->pGPIOx->MODER &= ~( 0x3 <<  pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber); // clearing
+		temp = (pGPIOHandle->GPIO_PinConfig.GPIO_PinMode << (2U * pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber));
+		pGPIOHandle->pGPIOx->MODER &= ~( 0x3U <<  pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber); // clearing
 		pGPIOHandle->pGPIOx->MODER |= temp; // setting
 	}
 	else
@@ -104,31 +104,31 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
 
 	// 2. configure the speed
 	temp = (pGPIOHandle->GPIO_PinConfig.GPIO_PinSpeed << (2* pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber));
-	pGPIOHandle->pGPIOx->OSPEEDR &= ~( 0x3 <<  pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber); // clearing
+	pGPIOHandle->pGPIOx->OSPEEDR &= ~( 0x3U <<  (2U* pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber)); // clearing
 	pGPIOHandle->pGPIOx->OSPEEDR |= temp; // setting
 
 	temp = 0;
 
 	// 3. configure the pull up / pull down settings
-	temp = (pGPIOHandle->GPIO_PinConfig.GPIO_PinPuPdControl << (2* pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber));
-	pGPIOHandle->pGPIOx->PUPDR &= ~(0x3 <<  pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber); // clearing
+	temp = (pGPIOHandle->GPIO_PinConfig.GPIO_PinPuPdControl << (2U* pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber));
+	pGPIOHandle->pGPIOx->PUPDR &= ~(0x3U <<  (2U* pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber)); // clearing
 	pGPIOHandle->pGPIOx->PUPDR |= temp; // setting
 	temp = 0;
 
 	// 4. configure the output type
 	temp = (pGPIOHandle->GPIO_PinConfig.GPIO_PinOPType << (pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber));
-	pGPIOHandle->pGPIOx->OTYPER &= ~( 0x1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber); // clearing
+	pGPIOHandle->pGPIOx->OTYPER &= ~( 0x1U << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber); // clearing
 	pGPIOHandle->pGPIOx->OTYPER |= temp;
 	temp = 0;
 
 	// 5. configure the alternate functionality
 	if(pGPIOHandle->GPIO_PinConfig.GPIO_PinMode == GPIO_MODE_ALTFN)
 	{
-		uint8_t AFRIndex= pGPIOHandle->GPIO_PinConfig.GPIO_PinMode / 8;
-		uint8_t position = pGPIOHandle->GPIO_PinConfig.GPIO_PinMode % 8;
+		uint8_t AFRIndex= pGPIOHandle->GPIO_PinConfig.GPIO_PinMode / 8U;
+		uint8_t position = pGPIOHandle->GPIO_PinConfig.GPIO_PinMode % 8U;
 
-		pGPIOHandle->pGPIOx->AFR[AFRIndex] &= ~( 0xF << (4 * position)); // clearing
-		pGPIOHandle->pGPIOx->AFR[AFRIndex] |= pGPIOHandle->GPIO_PinConfig.GPIO_PinAltFunMode << (4 * position); // setting
+		pGPIOHandle->pGPIOx->AFR[AFRIndex] &= ~( 0xF << (4U * position)); // clearing
+		pGPIOHandle->pGPIOx->AFR[AFRIndex] |= pGPIOHandle->GPIO_PinConfig.GPIO_PinAltFunMode << (4U * position); // setting
 	}
 	temp = 0;
 }

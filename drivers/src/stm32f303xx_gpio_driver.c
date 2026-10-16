@@ -67,38 +67,40 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
 	}
 	else
 	{
-		/*
 		// interrupt modes
 		if(pGPIOHandle->GPIO_PinConfig.GPIO_PinMode == GPIO_MODE_IT_FT)
 		{
 			// 1. configure the FTSR falling trigger selection register
-			EXTI->FTSR |= ( 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
+			EXTI->FTSR1 |= ( 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
 			// clear the corresponding RTSR bit
-			EXTI->RTSR &= ~( 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
+			EXTI->RTSR1 &= ~( 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
 		}
 		else if(pGPIOHandle->GPIO_PinConfig.GPIO_PinMode == GPIO_MODE_IT_RT)
 		{
 			// 1. configure the RTSR rising trigger selection register
-			EXTI->RTSR |= ( 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
+			EXTI->RTSR1 |= ( 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
 			// clear the corresponding FTSR bit
-			EXTI->FTSR &= ~( 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
+			EXTI->FTSR1 &= ~( 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
 		}
 		else if(pGPIOHandle->GPIO_PinConfig.GPIO_PinMode == GPIO_MODE_IT_RF)
 		{
 			// 1. configure both FTSR and RTSR
-			EXTI->FTSR |= ( 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
-			EXTI->RTSR |= ( 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
+			EXTI->FTSR1 |= ( 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
+			EXTI->RTSR1 |= ( 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
 		}
+
+		/*
 		// 2. Configure the GPIO port Selection in SYSCFG_EXTICR
 		uint8_t controlRegisterNumber = pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber / 4;
 		uint8_t controlRegisterPosition = pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber % 4;
 		uint8_t portCode = GPIO_BASEADDR_TO_CODE(pGPIOHandle->pGPIOx);
 		SYSCFG_PCLK_EN(); // Enable the clock
 		SYSCFG->EXTICR[controlRegisterNumber] = portCode << (controlRegisterPosition * 4);
+		*/
 
 		// 3. Enable the EXTI interrupt delivery using the IMR (interrupt mask register)
-		EXTI->IMR |= ( 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
-		*/
+		EXTI->IMR1 |= ( 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
+
 	}
 	temp = 0;
 

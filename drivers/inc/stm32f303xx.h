@@ -421,6 +421,18 @@ typedef struct
 #define GPIOG_REG_RESET()			do{(RCC->AHBRSTR |= (1 << 23));  (RCC->AHBRSTR &= ~(1 << 23));} while(0)
 #define GPIOH_REG_RESET()			do{(RCC->AHBRSTR |= (1 << 16));  (RCC->AHBRSTR &= ~(1 << 16));} while(0)
 
+
+/*
+ *	 IRQ (Interrupt Request) Numbers of STM32F746x MCU
+ */
+#define IRQ_NO_EXTI0			13
+#define IRQ_NO_EXTI1			14
+#define IRQ_NO_EXTI2			15
+#define IRQ_NO_EXTI3			16
+#define IRQ_NO_EXTI4			17
+#define IRQ_NO_EXTI9_5			30
+#define IRQ_NO_EXTI15_10		47
+
 // Utility Macros
 #define ENABLE      1
 #define DISABLE     0

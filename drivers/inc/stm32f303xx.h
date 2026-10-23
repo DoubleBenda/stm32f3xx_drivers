@@ -432,15 +432,36 @@ typedef struct
 
 
 /*
- *	 IRQ (Interrupt Request) Numbers of STM32F746x MCU
+ *	 IRQ (Interrupt Request) Numbers of STM32F303RE MCU
  */
-#define IRQ_NO_EXTI0			13
-#define IRQ_NO_EXTI1			14
-#define IRQ_NO_EXTI2			15
-#define IRQ_NO_EXTI3			16
-#define IRQ_NO_EXTI4			17
-#define IRQ_NO_EXTI9_5			30
-#define IRQ_NO_EXTI15_10		47
+#define IRQ_NO_EXTI0			6U
+#define IRQ_NO_EXTI1			7U
+#define IRQ_NO_EXTI2			8U
+#define IRQ_NO_EXTI3			9U
+#define IRQ_NO_EXTI4		   10U
+#define IRQ_NO_EXTI9_5		   23U
+#define IRQ_NO_EXTI15_10	   40U
+
+/*
+ * Macros for every possible Interrupt priority
+ * */
+#define NVIC_IRQ_PRIORITY_0 	 0
+#define NVIC_IRQ_PRIORITY_1 	 1
+#define NVIC_IRQ_PRIORITY_2 	 2
+#define NVIC_IRQ_PRIORITY_3 	 3
+#define NVIC_IRQ_PRIORITY_4 	 4
+#define NVIC_IRQ_PRIORITY_5 	 5
+#define NVIC_IRQ_PRIORITY_6 	 6
+#define NVIC_IRQ_PRIORITY_7 	 7
+#define NVIC_IRQ_PRIORITY_8 	 8
+#define NVIC_IRQ_PRIORITY_9		 9
+#define NVIC_IRQ_PRIORITY_10 	10
+#define NVIC_IRQ_PRIORITY_11 	11
+#define NVIC_IRQ_PRIORITY_12 	12
+#define NVIC_IRQ_PRIORITY_13 	13
+#define NVIC_IRQ_PRIORITY_14 	14
+#define NVIC_IRQ_PRIORITY_15 	15
+
 
 // Utility Macros
 #define ENABLE      1

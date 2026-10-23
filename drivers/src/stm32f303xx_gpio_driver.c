@@ -89,14 +89,13 @@ void GPIO_Init(GPIO_Handle_t *pGPIOHandle)
 			EXTI->RTSR1 |= ( 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
 		}
 
-		/*
+
 		// 2. Configure the GPIO port Selection in SYSCFG_EXTICR
 		uint8_t controlRegisterNumber = pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber / 4;
 		uint8_t controlRegisterPosition = pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber % 4;
 		uint8_t portCode = GPIO_BASEADDR_TO_CODE(pGPIOHandle->pGPIOx);
 		SYSCFG_PCLK_EN(); // Enable the clock
 		SYSCFG->EXTICR[controlRegisterNumber] = portCode << (controlRegisterPosition * 4);
-		*/
 
 		// 3. Enable the EXTI interrupt delivery using the IMR (interrupt mask register)
 		EXTI->IMR1 |= ( 1 << pGPIOHandle->GPIO_PinConfig.GPIO_PinNumber);
@@ -244,7 +243,7 @@ void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber)
  * @param[in]         - IRQPriority
  * @param[in]         - ENABLE or DISABLE macro
  */
-/*void GPIO_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnableOrDisable) // We could also add the parameter "IRQGrouping"
+void GPIO_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnableOrDisable) // We could also add the parameter "IRQGrouping"
 {
 	if(EnableOrDisable == ENABLE)
 	{
@@ -282,16 +281,16 @@ void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber)
 			*NVIC_ICER2 |= (1 << (IRQNumber % 64));
 		}
 	}
-}*/
+}
 
 /*********************************************************************
  * @fn      		  - GPIO_IRQPriorityConfig
  *
- * @brief             - This function handles and IRQ
+ * @brief             - This function configures the IRQ priority
  *
  * @param[in]         - Number of the pin who caused the IRQ
  */
-/*void GPIO_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority)
+void GPIO_IRQPriorityConfig(uint8_t IRQNumber, uint8_t IRQPriority)
 {
 	// 1. first let's find out the ipr register
 	uint8_t iprx = IRQNumber / 4;
@@ -300,7 +299,7 @@ void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber)
 	uint8_t shift_amount = (8 * iprx_section) + (8 - NO_PR_BITS_IMPLEMENTED);
 
 	*( NVIC_PR_BASE_ADDR + iprx * 4 ) |= ( IRQPriority << shift_amount );
-}*/
+}
 
 /*********************************************************************
  * @fn      		  - GPIO_IRQHandling

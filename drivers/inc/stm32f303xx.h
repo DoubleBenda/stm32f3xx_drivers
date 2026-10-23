@@ -49,6 +49,31 @@
 #define FMC_BANK4_BASEADDR    0x90000000U
 /* Registri di controllo FMC */
 #define FMC_CTRL_BASEADDR     0xA0000000U
+
+/*
+ * ============================================================
+ * ARM Cortex Mx Processor NVIC ISERx / NVIC ICERx register Addresses
+ * ============================================================
+ *
+ */
+#pragma region CPU_SPECIFIC_DETAILS
+
+#define NVIC_ISER0 				((volatile uint32_t*) 0xE000E100)
+#define NVIC_ISER1 				((volatile uint32_t*) 0xE000E104)
+#define NVIC_ISER2 				((volatile uint32_t*) 0xE000E108)
+#define NVIC_ISER3 				((volatile uint32_t*) 0xE000E10C)
+
+#define NVIC_ICER0 				((volatile uint32_t*) 0xE000E180)
+#define NVIC_ICER1 				((volatile uint32_t*) 0xE000E184)
+#define NVIC_ICER2 				((volatile uint32_t*) 0xE000E188)
+#define NVIC_ICER3 				((volatile uint32_t*) 0xE000E18C)
+
+#define NVIC_PR_BASE_ADDR   	((volatile uint32_t*) 0xE000E400)
+
+# define NO_PR_BITS_IMPLEMENTED 4
+
+#pragma endregion
+
 /*
  * ============================================================
  * PERIFERICHE CONNESSE AL BUS AHB1

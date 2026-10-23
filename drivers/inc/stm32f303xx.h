@@ -421,6 +421,15 @@ typedef struct
 #define GPIOG_REG_RESET()			do{(RCC->AHBRSTR |= (1 << 23));  (RCC->AHBRSTR &= ~(1 << 23));} while(0)
 #define GPIOH_REG_RESET()			do{(RCC->AHBRSTR |= (1 << 16));  (RCC->AHBRSTR &= ~(1 << 16));} while(0)
 
+#define GPIO_BASEADDR_TO_CODE(x)    (x == GPIOA) ?  0 : \
+									(x == GPIOB) ?  1 : \
+									(x == GPIOC) ?  2 : \
+									(x == GPIOD) ?  3 : \
+									(x == GPIOE) ?  4 : \
+									(x == GPIOF) ?  5 : \
+									(x == GPIOG) ?  6 : \
+									(x == GPIOH) ?  7 : 0
+
 
 /*
  *	 IRQ (Interrupt Request) Numbers of STM32F746x MCU
